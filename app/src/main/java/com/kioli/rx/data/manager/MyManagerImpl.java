@@ -1,8 +1,11 @@
 package com.kioli.rx.data.manager;
 
 import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
 
 import com.kioli.rx.binding.ClassWiring;
+import com.kioli.rx.data.model.AcronymResult;
+import com.kioli.rx.data.model.CombinedResult;
 import com.kioli.rx.data.model.Meme;
 import com.kioli.rx.data.model.MemeResult;
 import com.kioli.rx.network.serializer.BitmapSerializer;
@@ -12,12 +15,29 @@ import java.util.Random;
 
 import rx.Observable;
 import rx.Subscriber;
+import rx.functions.Func2;
 
 public class MyManagerImpl implements MyManager {
 
 	private Random _random = new Random();
 
 	private ArrayList<Meme> _memes;
+
+	@Override
+	public Observable<String> getAcronymMeaning(@NonNull final String acronym) {
+		return Observable.create(new Observable.OnSubscribe<String>() {
+			@Override
+			public void call(Subscriber<? super String> subscriber) {
+				try {
+					final AcronymResult result = ClassWiring.getMyDao().getAcronymExplanation(acronym);
+					subscriber.onNext(result.acronyms.get(0).meaning);
+					subscriber.onCompleted();
+				} catch (Exception e) {
+					subscriber.onError(e);
+				}
+			}
+		});
+	}
 
 	@Override
 	public Observable<Bitmap> getRandomMeme() {
@@ -43,6 +63,16 @@ public class MyManagerImpl implements MyManager {
 				} catch (Exception e) {
 					subscriber.onError(e);
 				}
+			}
+		});
+	}
+
+	@Override
+	public Observable<CombinedResult> getCombinedResult(@NonNull final String acronym) {
+		return Observable.zip(getRandomMeme(), getAcronymMeaning(acronym), new Func2<Bitmap, String, CombinedResult>() {
+			@Override
+			public CombinedResult call(Bitmap memeImage, String acronymResult) {
+				return new CombinedResult(acronymResult, memeImage);
 			}
 		});
 	}

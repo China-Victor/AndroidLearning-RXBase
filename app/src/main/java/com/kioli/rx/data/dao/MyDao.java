@@ -3,6 +3,7 @@ package com.kioli.rx.data.dao;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 
+import com.kioli.rx.data.model.AcronymResult;
 import com.kioli.rx.data.model.MemeResult;
 import com.kioli.rx.network.MyException;
 import com.kioli.rx.network.serializer.BitmapSerializer;
@@ -11,6 +12,13 @@ import com.kioli.rx.network.serializer.BitmapSerializer;
  * Dao to get meme data
  */
 public interface MyDao {
+
+	/**
+	 * @param acronym acronym we want to know the meaning of
+	 *
+	 * @return possible meaning of a given acronym
+	 */
+	AcronymResult getAcronymExplanation(@NonNull String acronym) throws MyException;
 
 	/**
 	 * @return memes data from the server
