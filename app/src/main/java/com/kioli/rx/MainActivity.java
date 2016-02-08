@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	private Subscription _subscriptionMeme;
 	private Subscription _subscriptionAcronym;
 	private Subscription _subscriptionCombined;
+	private Subscription _subscriptionWaterfall;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +45,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		Button _buttonMeme = (Button) findViewById(R.id.button_meme);
 		Button _buttonAcronym = (Button) findViewById(R.id.button_acronym);
 		Button _buttonBoth = (Button) findViewById(R.id.button_both);
+		Button _buttonWaterfall = (Button) findViewById(R.id.button_waterfall);
 
 		_buttonMeme.setOnClickListener(this);
 		_buttonAcronym.setOnClickListener(this);
 		_buttonBoth.setOnClickListener(this);
+		_buttonWaterfall.setOnClickListener(this);
 	}
 
 	@Override
@@ -61,6 +64,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 				break;
 			case R.id.button_both:
 				callCombined();
+				break;
+			case R.id.button_waterfall:
+				callWaterfall();
 				break;
 			default:
 				break;
@@ -80,6 +86,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	private void callCombined() {
 		_spinner.setVisibility(View.VISIBLE);
 		subscribeCombined();
+	}
+
+	private void callWaterfall() {
+		_spinner.setVisibility(View.VISIBLE);
+		subscribeWaterfall();
 	}
 
 	private void subscribeMeme() {
@@ -160,6 +171,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 				});
 	}
 
+	private void subscribeWaterfall() {
+		final String random = getRandomAcronym();
+		final Observable<Bitmap> observable = ClassWiring.getMyManager().getWaterfallResult(random);
+
+		_subscriptionWaterfall = observable
+				.subscribeOn(Schedulers.newThread())
+				.observeOn(AndroidSchedulers.mainThread())
+				.subscribe(new Observer<Bitmap>() {
+					@Override
+					public void onCompleted() {
+						// Do nothing
+					}
+
+					@Override
+					public void onError(final Throwable e) {
+						onCommonError(e);
+					}
+
+					@Override
+					public void onNext(final Bitmap bitmap) {
+						_spinner.setVisibility(View.GONE);
+						_image.setImageBitmap(bitmap);
+					}
+				});
+	}
+
 	private String getRandomAcronym() {
 		final StringBuilder salt = new StringBuilder();
 		final int lengthAcronym = MIN_ACRONYM_LENGTH +
@@ -178,6 +215,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		_subscriptionMeme.unsubscribe();
 		_subscriptionAcronym.unsubscribe();
 		_subscriptionCombined.unsubscribe();
+		_subscriptionWaterfall.unsubscribe();
 		super.onDestroy();
 	}
 

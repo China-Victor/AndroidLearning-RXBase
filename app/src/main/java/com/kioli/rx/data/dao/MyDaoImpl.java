@@ -3,6 +3,7 @@ package com.kioli.rx.data.dao;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.kioli.rx.data.model.AcronymResult;
 import com.kioli.rx.data.model.MemeResult;
@@ -37,6 +38,7 @@ public class MyDaoImpl extends HttpDao implements MyDao {
 		final HttpResult<AcronymResult[]> result = doRequest(_context,
 				requestData,
 				new JsonParser<>(AcronymResult[].class));
+		Log.i("LORENZO", "thread:" + Thread.currentThread().getId() + " acronym: " + acronym);
 		return result.result[0];
 	}
 
@@ -62,6 +64,7 @@ public class MyDaoImpl extends HttpDao implements MyDao {
 		final HttpResult<Bitmap> result = doRequest(_context,
 				requestData,
 				new BitmapParser(scaleType, width, height));
+		Log.i("LORENZO",  "thread:" + Thread.currentThread().getId() + " get meme image");
 		return result.result;
 	}
 }

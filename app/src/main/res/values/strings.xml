@@ -3,4 +3,5 @@
     <string name="button_get_meme">meme</string>
     <string name="button_get_acronym">acronym</string>
     <string name="button_get_both">both</string>
+    <string name="button_get_waterfall">waterfall</string>
 </resources>

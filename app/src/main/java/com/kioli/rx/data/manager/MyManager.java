@@ -27,4 +27,9 @@ public interface MyManager {
 	 * @return observable for a combined result of an Acronym and a Bitmap
 	 */
 	Observable<CombinedResult> getCombinedResult(@NonNull String acronym);
+
+	/**
+	 * @return observable for a result of an waterfall call (Acronym and then Bitmap)
+	 */
+	Observable<Bitmap> getWaterfallResult(@NonNull String acronym);
 }
