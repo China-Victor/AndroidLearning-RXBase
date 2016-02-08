@@ -39,11 +39,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+		_spinner = (RelativeLayout) findViewById(R.id.spinner);
 		_image = (ImageView) findViewById(R.id.image);
 		Button _buttonMeme = (Button) findViewById(R.id.button_meme);
 		Button _buttonAcronym = (Button) findViewById(R.id.button_acronym);
 		Button _buttonBoth = (Button) findViewById(R.id.button_both);
-		_spinner = (RelativeLayout) findViewById(R.id.spinner);
 
 		_buttonMeme.setOnClickListener(this);
 		_buttonAcronym.setOnClickListener(this);

@@ -16,6 +16,7 @@ import java.util.Random;
 import rx.Observable;
 import rx.Subscriber;
 import rx.functions.Func2;
+import rx.schedulers.Schedulers;
 
 public class MyManagerImpl implements MyManager {
 
@@ -69,7 +70,10 @@ public class MyManagerImpl implements MyManager {
 
 	@Override
 	public Observable<CombinedResult> getCombinedResult(@NonNull final String acronym) {
-		return Observable.zip(getRandomMeme(), getAcronymMeaning(acronym), new Func2<Bitmap, String, CombinedResult>() {
+		final Observable<Bitmap> obsMeme = getRandomMeme().subscribeOn(Schedulers.newThread());
+		final Observable<String> obsAcronym = getAcronymMeaning(acronym).subscribeOn(Schedulers.newThread());
+
+		return Observable.zip(obsMeme, obsAcronym, new Func2<Bitmap, String, CombinedResult>() {
 			@Override
 			public CombinedResult call(Bitmap memeImage, String acronymResult) {
 				return new CombinedResult(acronymResult, memeImage);
