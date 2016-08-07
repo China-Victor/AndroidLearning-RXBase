@@ -17,52 +17,31 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button_meme"
+                android:id="@+id/button_login"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:layout_weight="0.33"
+                android:layout_weight="0.5"
                 android:singleLine="true"
-                android:text="@string/button_get_meme"/>
+                android:text="@string/button_login"/>
 
             <Button
-                android:id="@+id/button_acronym"
+                android:id="@+id/button_getusers"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:layout_weight="0.33"
+                android:layout_weight="0.5"
                 android:singleLine="true"
-                android:text="@string/button_get_acronym"/>
-
-            <Button
-                android:id="@+id/button_both"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:layout_weight="0.33"
-                android:singleLine="true"
-                android:text="@string/button_get_both"/>
-
-            <Button
-                android:id="@+id/button_waterfall"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:layout_weight="0.33"
-                android:singleLine="true"
-                android:text="@string/button_get_waterfall"/>
+                android:text="@string/button_getusers"/>
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/image"
+        <TextView
+            android:id="@+id/result_users"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:gravity="center"/>
+            android:layout_marginTop="@dimen/activity_vertical_margin"/>
     </LinearLayout>
 
     <RelativeLayout

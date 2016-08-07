@@ -3,13 +3,14 @@ package com.kioli.rx.binding;
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.kioli.rx.data.dao.MyDao;
-import com.kioli.rx.data.dao.MyDaoImpl;
-import com.kioli.rx.data.manager.ConnectionManager;
-import com.kioli.rx.data.manager.ConnectionManagerImpl;
-import com.kioli.rx.data.manager.MyManager;
-import com.kioli.rx.data.manager.MyManagerImpl;
-import com.kioli.rx.network.request.HttpRequestExecutorImpl;
+import com.kioli.rx.data.dao.UserDao;
+import com.kioli.rx.data.dao.UserDaoImpl;
+import com.kioli.rx.data.manager.SchedulerManager;
+import com.kioli.rx.data.manager.ServiceManager;
+import com.kioli.rx.data.manager.UserManager;
+import com.kioli.rx.data.manager.implementation.SchedulerManagerImpl;
+import com.kioli.rx.data.manager.implementation.ServiceManagerImpl;
+import com.kioli.rx.data.manager.implementation.UserManagerImpl;
 
 public class ClassFactoryImpl implements ClassFactory {
 
@@ -20,17 +21,22 @@ public class ClassFactoryImpl implements ClassFactory {
 	}
 
 	@Override
-	public ConnectionManager getConnectionManager() {
-		return new ConnectionManagerImpl(new HttpRequestExecutorImpl());
+	public ServiceManager getServiceManager() {
+		return new ServiceManagerImpl();
 	}
 
 	@Override
-	public MyDao getMyDao() {
-		return new MyDaoImpl(_context);
+	public SchedulerManager getSchedulerManager() {
+		return new SchedulerManagerImpl();
 	}
 
 	@Override
-	public MyManager getMyManager() {
-		return new MyManagerImpl();
+	public UserDao getUserDao() {
+		return new UserDaoImpl();
+	}
+
+	@Override
+	public UserManager getUserManager() {
+		return new UserManagerImpl();
 	}
 }

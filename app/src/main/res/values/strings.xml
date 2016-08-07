@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">RX</string>
-    <string name="button_get_meme">meme</string>
-    <string name="button_get_acronym">acronym</string>
-    <string name="button_get_both">both</string>
-    <string name="button_get_waterfall">waterfall</string>
+    <string name="app_name">RX + RETRO + NODE API</string>
+    <string name="button_login">login</string>
+    <string name="button_getusers">get users</string>
 </resources>

@@ -1,17 +1,27 @@
 package com.kioli.rx.binding;
 
-import com.kioli.rx.data.dao.MyDao;
-import com.kioli.rx.data.manager.ConnectionManager;
-import com.kioli.rx.data.manager.MyManager;
+import com.kioli.rx.data.dao.UserDao;
+import com.kioli.rx.data.manager.SchedulerManager;
+import com.kioli.rx.data.manager.ServiceManager;
+import com.kioli.rx.data.manager.UserManager;
 
 public final class ClassWiring {
 
-	private static ClassFactory _classFactory;
-	private static ConnectionManager _connectionManager;
-	private static MyManager _myManager;
-	private static MyDao _myDao;
+	private static ClassWiring _instance;
+	private ClassFactory _classFactory;
+	private ServiceManager _serviceManager;
+	private SchedulerManager _schedulerManager;
+	private UserManager _userManager;
+	private UserDao _userDao;
 
 	private ClassWiring() {
+	}
+
+	public static ClassWiring getInstance() {
+		if (_instance == null) {
+			_instance = new ClassWiring();
+		}
+		return _instance;
 	}
 
 	/**
@@ -21,32 +31,40 @@ public final class ClassWiring {
 	 *
 	 * @param factory the factory providing all the managers and DAOs needed in this app
 	 */
-	public static void setClassFactory(final ClassFactory factory) {
-		_connectionManager = null;
-		_myDao = null;
-		_myManager = null;
+	public void setClassFactory(final ClassFactory factory) {
+		_serviceManager = null;
+		_schedulerManager = null;
+		_userDao = null;
+		_userManager = null;
 		_classFactory = factory;
 	}
 
-	public static ConnectionManager getConnectionManager() {
-		if (_connectionManager == null) {
-			_connectionManager = _classFactory.getConnectionManager();
+	public ServiceManager getServiceManager() {
+		if (_serviceManager == null) {
+			_serviceManager = _classFactory.getServiceManager();
 		}
-		return _connectionManager;
+		return _serviceManager;
 	}
 
-	public static MyDao getMyDao() {
-		if (_myDao == null) {
-			_myDao = _classFactory.getMyDao();
+	public SchedulerManager getSchedulerManager() {
+		if (_schedulerManager == null) {
+			_schedulerManager = _classFactory.getSchedulerManager();
 		}
-		return _myDao;
+		return _schedulerManager;
 	}
 
-	public static MyManager getMyManager() {
-		if (_myManager == null) {
-			_myManager = _classFactory.getMyManager();
+	public UserDao getUserDao() {
+		if (_userDao == null) {
+			_userDao = _classFactory.getUserDao();
 		}
-		return _myManager;
+		return _userDao;
+	}
+
+	public UserManager getUserManager() {
+		if (_userManager == null) {
+			_userManager = _classFactory.getUserManager();
+		}
+		return _userManager;
 	}
 
 }

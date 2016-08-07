@@ -10,6 +10,6 @@ public class App extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		ClassWiring.setClassFactory(new ClassFactoryImpl(this));
+		ClassWiring.getInstance().setClassFactory(new ClassFactoryImpl(this));
 	}
 }

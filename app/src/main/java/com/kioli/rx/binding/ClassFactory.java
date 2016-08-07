@@ -1,8 +1,9 @@
 package com.kioli.rx.binding;
 
-import com.kioli.rx.data.dao.MyDao;
-import com.kioli.rx.data.manager.ConnectionManager;
-import com.kioli.rx.data.manager.MyManager;
+import com.kioli.rx.data.dao.UserDao;
+import com.kioli.rx.data.manager.SchedulerManager;
+import com.kioli.rx.data.manager.ServiceManager;
+import com.kioli.rx.data.manager.UserManager;
 
 /**
  * Interface for the central unit handling managers and DAOs
@@ -10,17 +11,22 @@ import com.kioli.rx.data.manager.MyManager;
 public interface ClassFactory {
 
 	/**
-	 * @return an implementation of the ConnectionManager
+	 * @return an implementation of the ServiceManager
 	 */
-	ConnectionManager getConnectionManager();
+	ServiceManager getServiceManager();
 
 	/**
-	 * @return an implementation of the MyManager
+	 * @return an implementation of the SchedulerManager
 	 */
-	MyManager getMyManager();
+	SchedulerManager getSchedulerManager();
 
 	/**
-	 * @return an implementation of the MyDao
+	 * @return an implementation of the UserManager
 	 */
-	MyDao getMyDao();
+	UserManager getUserManager();
+
+	/**
+	 * @return an implementation of the UserDao
+	 */
+	UserDao getUserDao();
 }
