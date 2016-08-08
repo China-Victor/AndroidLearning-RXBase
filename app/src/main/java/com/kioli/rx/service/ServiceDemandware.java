@@ -24,7 +24,7 @@ public interface ServiceDemandware {
 	class Factory {
 		public static ServiceDemandware create() {
 			final Retrofit retrofit = new Retrofit.Builder()
-					.baseUrl("http://10.0.2.2:3000/")
+					.baseUrl("http://kioliserver.herokuapp.com/")
 					.addConverterFactory(GsonConverterFactory.create())
 					.addCallAdapterFactory(RxJavaCallAdapterFactory.create())
 					.build();
