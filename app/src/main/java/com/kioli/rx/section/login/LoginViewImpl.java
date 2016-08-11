@@ -1,5 +1,6 @@
 package com.kioli.rx.section.login;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -19,8 +20,12 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.kioli.rx.R;
-import com.kioli.rx.core.ui.InjectingActivity;
 import com.kioli.rx.core.data.model.User;
+import com.kioli.rx.core.ui.InjectingActivity;
+import com.kioli.rx.section.home.HomeViewImpl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -37,7 +42,9 @@ public class LoginViewImpl extends InjectingActivity implements View.OnClickList
 	@BindView(R.id.input_password)
 	TextInputEditText passwordField;
 	@BindView(R.id.button_login)
-	AppCompatButton loginButton;
+	AppCompatButton buttonLogin;
+	@BindView(R.id.button_list_users)
+	AppCompatButton buttonListUsers;
 
 	private Drawable _passwordVisibilityOff;
 	private Drawable _passwordVisibilityOn;
@@ -81,7 +88,8 @@ public class LoginViewImpl extends InjectingActivity implements View.OnClickList
 	}
 
 	private void setListeners() {
-		loginButton.setOnClickListener(this);
+		buttonLogin.setOnClickListener(this);
+		buttonListUsers.setOnClickListener(this);
 		emailField.addTextChangedListener(new EmailTextWatcher());
 		passwordField.setOnTouchListener(this);
 	}
@@ -91,6 +99,9 @@ public class LoginViewImpl extends InjectingActivity implements View.OnClickList
 		switch (v.getId()) {
 			case R.id.button_login:
 				_loginPresenter.clickLoginButton(emailField.getText().toString(), passwordField.getText().toString());
+				break;
+			case R.id.button_list_users:
+				_loginPresenter.clickListUsersButton();
 				break;
 			default:
 				break;
@@ -126,11 +137,20 @@ public class LoginViewImpl extends InjectingActivity implements View.OnClickList
 
 	@Override
 	public void onLoginSuccessful(@NonNull final User user) {
-		// DO SOMETHING
+		final ArrayList<User> listUsers = new ArrayList<>();
+		listUsers.add(user);
+		final Intent intent = HomeViewImpl.getLaunchingIntent(this, listUsers);
+		startActivity(intent);
 	}
 
 	@Override
-	public void onLoginFailed(@NonNull final Throwable error) {
+	public void onListUsersSuccessful(@NonNull final List<User> listUsers) {
+		final Intent intent = HomeViewImpl.getLaunchingIntent(this, new ArrayList<>(listUsers));
+		startActivity(intent);
+	}
+
+	@Override
+	public void onFailure(@NonNull final Throwable error) {
 		error.printStackTrace();
 		Toast.makeText(LoginViewImpl.this, error.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 	}

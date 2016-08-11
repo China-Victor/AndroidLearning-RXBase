@@ -48,6 +48,14 @@
             android:layout_gravity="center"
             android:singleLine="true"
             android:text="@string/login_button"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/button_list_users"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:singleLine="true"
+            android:text="@string/list_user_button"/>
     </LinearLayout>
 
     <RelativeLayout

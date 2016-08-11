@@ -8,32 +8,20 @@ import com.kioli.rx.core.data.model.User;
 
 import java.util.List;
 
-import rx.Scheduler;
 import rx.Single;
-import rx.android.schedulers.AndroidSchedulers;
 
 public class UserManagerImpl implements UserManager {
 
 	@Override
 	public Single<List<User>> getAllUsers() {
 		final ClassWiring classWiring = ClassWiring.getInstance();
-		final Scheduler subscribeScheduler = classWiring.getSchedulerManager().getSubscribeScheduler();
-		final Single<List<User>> single = classWiring.getUserDao().getAllUsers();
-
-		return single
-				.observeOn(AndroidSchedulers.mainThread())
-				.subscribeOn(subscribeScheduler);
+		return classWiring.getUserDao().getAllUsers();
 	}
 
 	@Override
 	public Single<Void> registerUser(@NonNull final User user) {
 		final ClassWiring classWiring = ClassWiring.getInstance();
-		final Scheduler subscribeScheduler = classWiring.getSchedulerManager().getSubscribeScheduler();
-		final Single<Void> single = classWiring.getUserDao().registerUser(user);
-
-		return single
-				.observeOn(AndroidSchedulers.mainThread())
-				.subscribeOn(subscribeScheduler);
+		return classWiring.getUserDao().registerUser(user);
 	}
 
 //	@Override

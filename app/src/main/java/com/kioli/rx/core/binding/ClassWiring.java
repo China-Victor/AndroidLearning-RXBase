@@ -5,7 +5,7 @@ import com.kioli.rx.core.data.manager.SchedulerManager;
 import com.kioli.rx.core.data.manager.ServiceManager;
 import com.kioli.rx.core.data.manager.UserManager;
 
-public final class ClassWiring {
+public class ClassWiring {
 
 	private static ClassWiring _instance;
 	private ClassFactory _classFactory;
