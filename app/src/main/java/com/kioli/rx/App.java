@@ -2,8 +2,8 @@ package com.kioli.rx;
 
 import android.app.Application;
 
-import com.kioli.rx.binding.ClassFactoryImpl;
-import com.kioli.rx.binding.ClassWiring;
+import com.kioli.rx.core.binding.ClassFactoryImpl;
+import com.kioli.rx.core.binding.ClassWiring;
 
 public class App extends Application {
 

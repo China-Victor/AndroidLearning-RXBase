@@ -1,8 +1,8 @@
-package com.kioli.rx.data.manager;
+package com.kioli.rx.core.data.manager;
 
 import android.support.annotation.NonNull;
 
-import com.kioli.rx.data.model.User;
+import com.kioli.rx.core.data.model.User;
 
 import java.util.List;
 

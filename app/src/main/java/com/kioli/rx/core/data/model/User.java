@@ -1,4 +1,4 @@
-package com.kioli.rx.data.model;
+package com.kioli.rx.core.data.model;
 
 public class User {
 

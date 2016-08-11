@@ -1,6 +1,6 @@
-package com.kioli.rx.data.manager;
+package com.kioli.rx.core.data.manager;
 
-import com.kioli.rx.service.ServiceDemandware;
+import com.kioli.rx.core.service.ServiceDemandware;
 
 /**
  * Interface for the central unit handling services

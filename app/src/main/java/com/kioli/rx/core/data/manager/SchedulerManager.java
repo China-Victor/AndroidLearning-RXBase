@@ -1,4 +1,4 @@
-package com.kioli.rx.data.manager;
+package com.kioli.rx.core.data.manager;
 
 import rx.Scheduler;
 

@@ -1,16 +1,16 @@
-package com.kioli.rx.binding;
+package com.kioli.rx.core.binding;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 
-import com.kioli.rx.data.dao.UserDao;
-import com.kioli.rx.data.dao.UserDaoImpl;
-import com.kioli.rx.data.manager.SchedulerManager;
-import com.kioli.rx.data.manager.ServiceManager;
-import com.kioli.rx.data.manager.UserManager;
-import com.kioli.rx.data.manager.implementation.SchedulerManagerImpl;
-import com.kioli.rx.data.manager.implementation.ServiceManagerImpl;
-import com.kioli.rx.data.manager.implementation.UserManagerImpl;
+import com.kioli.rx.core.data.dao.UserDao;
+import com.kioli.rx.core.data.dao.UserDaoImpl;
+import com.kioli.rx.core.data.manager.SchedulerManager;
+import com.kioli.rx.core.data.manager.ServiceManager;
+import com.kioli.rx.core.data.manager.UserManager;
+import com.kioli.rx.core.data.manager.implementation.SchedulerManagerImpl;
+import com.kioli.rx.core.data.manager.implementation.ServiceManagerImpl;
+import com.kioli.rx.core.data.manager.implementation.UserManagerImpl;
 
 public class ClassFactoryImpl implements ClassFactory {
 

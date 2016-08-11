@@ -1,6 +1,6 @@
-package com.kioli.rx.service;
+package com.kioli.rx.core.service;
 
-import com.kioli.rx.data.model.User;
+import com.kioli.rx.core.data.model.User;
 
 import java.util.List;
 

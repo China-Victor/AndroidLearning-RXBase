@@ -1,10 +1,10 @@
-package com.kioli.rx.data.manager.implementation;
+package com.kioli.rx.core.data.manager.implementation;
 
 import android.support.annotation.NonNull;
 
-import com.kioli.rx.binding.ClassWiring;
-import com.kioli.rx.data.manager.UserManager;
-import com.kioli.rx.data.model.User;
+import com.kioli.rx.core.binding.ClassWiring;
+import com.kioli.rx.core.data.manager.UserManager;
+import com.kioli.rx.core.data.model.User;
 
 import java.util.List;
 

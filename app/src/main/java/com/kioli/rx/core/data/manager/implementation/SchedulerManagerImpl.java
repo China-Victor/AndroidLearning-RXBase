@@ -1,6 +1,6 @@
-package com.kioli.rx.data.manager.implementation;
+package com.kioli.rx.core.data.manager.implementation;
 
-import com.kioli.rx.data.manager.SchedulerManager;
+import com.kioli.rx.core.data.manager.SchedulerManager;
 
 import rx.Scheduler;
 import rx.schedulers.Schedulers;

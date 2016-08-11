@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">RX + RETRO + NODE API</string>
-    <string name="button_login">login</string>
-    <string name="button_getusers">get users</string>
+
+    <string name="login_button">login</string>
+    <string name="login_email_hint">Insert your email</string>
+    <string name="login_email_error">Insert a valid email address</string>
+    <string name="login_password_hint">Insert your password</string>
 </resources>
