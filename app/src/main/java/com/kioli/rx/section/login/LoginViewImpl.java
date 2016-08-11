@@ -87,7 +87,7 @@ public class LoginViewImpl extends AppCompatActivity implements View.OnClickList
 		_loginPresenter.clickLoginButton(_emailField.getText().toString(), _passwordField.getText().toString());
 	}
 
-	public class EmailTextWatcher implements TextWatcher {
+	private class EmailTextWatcher implements TextWatcher {
 
 		@Override
 		public void beforeTextChanged(final CharSequence charSequence, final int i, final int i1, final int i2) {

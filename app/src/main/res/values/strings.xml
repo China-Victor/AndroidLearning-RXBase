@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RX + RETRO + NODE API</string>
+    <string name="app_name">RX + RETRO + MVP + NODE API</string>
 
     <string name="login_button">login</string>
     <string name="login_email_hint">Insert your email</string>
