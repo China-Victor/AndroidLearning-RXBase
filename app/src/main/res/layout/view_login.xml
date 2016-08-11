@@ -36,10 +36,12 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:hint="@string/login_password_hint"
-                android:lines="1"/>
+                android:inputType="textPassword"
+                android:lines="1"
+                android:longClickable="false"/>
         </android.support.design.widget.TextInputLayout>
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
             android:id="@+id/button_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

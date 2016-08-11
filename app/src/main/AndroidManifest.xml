@@ -14,8 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".section.login.LoginViewImpl"
-            android:screenOrientation="portrait">
+            android:name=".section.login.LoginViewImpl">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
